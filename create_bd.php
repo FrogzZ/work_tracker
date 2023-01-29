@@ -13,6 +13,13 @@ try{
         urgency smallint NOT NULL
         )";
     $res = pg_query($sql);
+
+    $sql = "CREATE TABLE IF NOT EXISTS auth (
+        id serial PRIMARY KEY,
+        login varchar (100),
+        pass varchar (32)
+        )";
+    $res = pg_query($sql);
     echo 'База создана успешно!';
 } catch (Exception $e){
     echo 'Ошибка:' . $e;

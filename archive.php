@@ -1,7 +1,7 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -15,8 +15,10 @@ ini_set('display_startup_errors', 1);
     <title>Work Tracker</title>
 </head>
 <body>
+<?php
+if($_COOKIE['user'] != ''):
+?>
 <?php include "blocks/header.php"?>
-
 <?php
 require "db/config.php";
 $dbconn = pg_connect("host=$host dbname=$db user=$username password=$password")
@@ -28,6 +30,7 @@ if (!$res) {
     exit;
 }
 $get_all_tasks = pg_fetch_all($res);
+pg_close($dbconn);
 ?>
 
 <?php foreach ($get_all_tasks as $active):?>
@@ -60,5 +63,6 @@ $get_all_tasks = pg_fetch_all($res);
         </div>
     </div>
 <?php endforeach; ?>
+<?php endif; ?>
 </body>
 </html>

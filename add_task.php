@@ -1,7 +1,7 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 ?>
 
 <!doctype html>
@@ -16,8 +16,10 @@ ini_set('display_startup_errors', 1);
     <title>Work Tracker</title>
 </head>
 <body>
+<?php
+if($_COOKIE['user'] != ''):
+?>
 <?php include "blocks/header.php"?>
-
 <div class="container">
     <form method="post" action="success.php">
         <div class="form-group">
@@ -39,5 +41,6 @@ ini_set('display_startup_errors', 1);
         <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить задачу</button>
     </form>
 </div>
+<?php endif;?>
 </body>
 </html>

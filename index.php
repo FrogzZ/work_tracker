@@ -1,7 +1,7 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -14,9 +14,18 @@ ini_set('display_startup_errors', 1);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <title>Work Tracker</title>
 </head>
+<body>
+<?php
+if($_COOKIE['user'] == ''):
+?>
+<form method="post" action="check.php">
+    <label for="username">Логин:</label><input type="text" name="username" class="placeholder" required placeholder="Логин">
+    <label for="password">Пароль:</label><input type="password" name="password" class="placeholder" required placeholder="Пароль">
+    <input type="submit" value="Вход">
+</form>
+<?php else:?>
 
 <?php include "blocks/header.php"?>
-
 <?php
 require "db/config.php";
 $dbconn = pg_connect("host=$host dbname=$db user=$username password=$password")
@@ -28,6 +37,7 @@ if (!$res) {
     exit;
 }
 $get_all_tasks = pg_fetch_all($res);
+pg_close($dbconn);
 ?>
 
 <?php foreach ($get_all_tasks as $active):?>
@@ -60,5 +70,6 @@ $get_all_tasks = pg_fetch_all($res);
         </div>
     </div>
 <?php endforeach; ?>
+<?php endif;?>
 </body>
 </html>
