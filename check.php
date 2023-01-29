@@ -32,6 +32,6 @@ if($get_user === false){
     exit();
 }
 
-setcookie('user', $get_user['login'], time() + 3600 * 24 * 3, "/");
+setcookie('user', $get_user['login'], time() + 3600 * 24 * 30, "/");
 
 header('Location: /');
