@@ -3,9 +3,10 @@
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 
-
 $login = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
 $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
+
+//echo $login . ' ' . $pass; exit();
 
 if(mb_strlen($login) < 5 || mb_strlen($login) > 90){
     echo "Недопустимая длина логина";

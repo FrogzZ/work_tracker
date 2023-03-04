@@ -18,11 +18,19 @@
 <?php
 if($_COOKIE['user'] == ''):
 ?>
-<form method="post" action="check.php">
-    <label for="username">Логин:</label><input type="text" name="username" class="placeholder" required placeholder="Логин">
-    <label for="password">Пароль:</label><input type="password" name="password" class="placeholder" required placeholder="Пароль">
-    <input type="submit" value="Вход">
-</form>
+<div class="container mt-5">
+    <form method="post" action="check.php">
+        <div class="form-group">
+            <label for="username">Логин:</label>
+            <input type="text" name="username" class="form-control" required placeholder="Логин">
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" class="form-control" required placeholder="Пароль">
+        </div>
+        <input type="submit" class="btn btn-success d-block mx-auto" value="Войти">
+    </form>
+</div>
 <?php else:?>
 
 <?php include "blocks/header.php"?>
@@ -41,7 +49,7 @@ pg_close($dbconn);
 ?>
 
 <?php foreach ($get_all_tasks as $active):?>
-    <div class="container mt-5">
+    <div class="container mt-4">
         <div class="card mb-4 shadow-sm">
             <div class="card-header <?php
             switch ($active['urgency']) {
