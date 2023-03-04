@@ -37,7 +37,7 @@ else{?>
             <h1 class="jumbotron-heading">Готово</h1>
             <p class="lead text-muted">Задача была добавлена</p>
             <p>
-                <a href="Location: /" class="btn btn-secondary my-2">К задачам</a>
+                <a href="/" class="btn btn-secondary my-2">К задачам</a>
             </p>
         </div>
     </section>

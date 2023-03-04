@@ -35,4 +35,4 @@ if($get_user === false){
 
 setcookie('user', $get_user['login'], time() + 3600 * 24 * 30, "/");
 
-header('Location: /');
+header('/');
