@@ -32,27 +32,38 @@ if($_COOKIE['user'] == ''):
     </form>
 </div>
 <?php else:?>
-
 <?php include "blocks/header.php"?>
 <?php
-require "db/config.php";
-$dbconn = pg_connect("host=$host dbname=$db user=$username password=$password")
-or die('Не удалось соединиться: ' . pg_last_error());
+    require "db/config.php";
+    require "db/connect.php";
 
-$res = pg_query($dbconn, "SELECT * FROM tracker.public.tasks where archive = false ORDER BY id DESC");
-if (!$res) {
-    echo "Произошла ошибка\n";
-    exit;
-}
-$get_all_tasks = pg_fetch_all($res);
-pg_close($dbconn);
-?>
+    $sql = "SELECT * FROM tasks where archive = false ORDER BY id DESC";
+    $result = mysqli_query($conn, $sql);
+    $get_all_tasks = mysqli_fetch_all($result);
+    $conn->close();
+
+
+// POSTGRESQL
+
+//require "db/config.php";
+//$dbconn = pg_connect("host=$host dbname=$db user=$username password=$password")
+//or die('Не удалось соединиться: ' . pg_last_error());
+//
+//$res = pg_query($dbconn, "SELECT * FROM tracker.public.tasks where archive = false ORDER BY id DESC");
+//if (!$res) {
+//    echo "Произошла ошибка\n";
+//    exit;
+//}
+//$get_all_tasks = pg_fetch_all($res);
+//pg_close($dbconn);
+//
+    ?>
 
 <?php foreach ($get_all_tasks as $active):?>
     <div class="container mt-4">
         <div class="card mb-4 shadow-sm">
             <div class="card-header <?php
-            switch ($active['urgency']) {
+            switch ($active[6]) {
                 case 0:
                     echo 'bg-success';
                     break;
@@ -64,15 +75,15 @@ pg_close($dbconn);
                     break;
             }
             ?>">
-                <h4 class="my-0 font-weight-normal text-white"><?php echo $active["title"];?></h4>
+                <h4 class="my-0 font-weight-normal text-white"><?php echo $active[1];?></h4>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li><?php echo $active["description"];?></li>
-                    <small id="emailHelp" class="form-text text-muted">Задание добавлено: <?php echo $active["create_at"];?></small>
+                    <li><?php echo $active[2];?></li>
+                    <small id="emailHelp" class="form-text text-muted">Задание добавлено: <?php echo $active[4];?></small>
                 </ul>
                 <form method="post" action="task_to_archive.php">
-                    <button type="submit" name="to_archive" value="<?php echo $active["id"];?>" class="btn btn-lg btn-block btn-outline-success">Задача готова</button>
+                    <button type="submit" name="to_archive" value="<?php echo $active[0];?>" class="btn btn-lg btn-block btn-outline-success">Задача готова</button>
                 </form>
             </div>
         </div>

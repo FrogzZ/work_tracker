@@ -1,3 +1,8 @@
+<?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -10,16 +15,15 @@
 </head>
 <body>
 <?php
-require "db/config.php";
-$dbconn = pg_connect("host=$host dbname=$db user=$username password=$password")
-or die('Не удалось соединиться: ' . pg_last_error());
-
 date_default_timezone_set('UTC');
 $date = date('d.m.Y');
 
-$query = "UPDATE tasks SET archive = true, update_at = '$date' where id = '$_POST[to_archive]'";
-$res = pg_query($query);
-if (!$res) {
+require "db/config.php";
+require "db/connect.php";
+$query = "UPDATE tasks SET archive = 1, update_at = '$date' where id = '$_POST[to_archive]'";
+$conn->query($query);
+$conn->close();
+if (!$query) {
     echo "Произошла ошибка\n";
     exit;
 }else{?>
@@ -28,7 +32,7 @@ if (!$res) {
             <h1 class="jumbotron-heading">Готово</h1>
             <p class="lead text-muted">Задача была добавлена в архив</p>
             <p>
-                <a href="http://dev.tracker.ru/" class="btn btn-secondary my-2">К задачам</a>
+                <a href="Location: /" class="btn btn-secondary my-2">К задачам</a>
             </p>
         </div>
     </section>

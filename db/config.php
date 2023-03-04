@@ -1,5 +1,11 @@
 <?php
+//$host='localhost';
+//$db = 'tracker';
+//$username = 'postgres';
+//$password = 'qwerty';
+
+
 $host='localhost';
 $db = 'tracker';
-$username = 'postgres';
-$password = 'qwerty';
+$username = 'megaroot';
+$password = '0000';
