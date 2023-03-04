@@ -36,7 +36,6 @@ require "db/config.php";
 
 
 // MYSQL
-
 $conn = new mysqli($host, $username, $password, $db);
 if ($conn->connect_error) {
     die("Ошибка: не удается подключиться: " . $conn->connect_error);
@@ -53,11 +52,11 @@ $sql = "CREATE TABLE IF NOT EXISTS tasks (
     urgency smallint NOT NULL
 )";
 
-$sql = "CREATE TABLE IF NOT EXISTS auth (
-    id serial PRIMARY KEY,
-    login varchar (100),
-    pass varchar (32)
-    )";
+//$sql = "CREATE TABLE IF NOT EXISTS auth (
+//    id serial PRIMARY KEY,
+//    login varchar (100),
+//    pass varchar (32)
+//    )";
 
 if ($conn->query($sql) === TRUE) {
     echo "Table tasks created successfully";

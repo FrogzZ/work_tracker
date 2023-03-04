@@ -13,7 +13,7 @@ if(mb_strlen($login) < 5 || mb_strlen($login) > 90){
     exit;
 }
 
-if(mb_strlen($pass) < 2 || mb_strlen($pass) > 10){
+if(mb_strlen($pass) < 4 || mb_strlen($pass) > 15){
     echo "Недопустимая длина пароля";
     exit;
 }

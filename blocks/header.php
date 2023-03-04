@@ -5,9 +5,9 @@
             </svg> Work Tracker</h5>
     </a>
     <nav class="my-2 my-md-0 mr-md-1">
-        <a class="p-2 text-white" href="http://dev.tracker.ru/">Новые задачи</a>
-        <a class="p-2 text-white" href="http://dev.tracker.ru/archive.php">Архив задач</a>
-        <a class="btn btn-outline-light" href="http://dev.tracker.ru/add_task.php">Добавить задачу</a>
-        <a class="btn btn-outline-light" href="http://dev.tracker.ru/logout.php">Выход</a>
+        <a class="p-2 text-white" href="/">Новые задачи</a>
+        <a class="p-2 text-white" href="/archive.php">Архив задач</a>
+        <a class="btn btn-outline-light" href="/add_task.php">Добавить задачу</a>
+        <a class="btn btn-outline-light" href="/logout.php">Выход</a>
     </nav>
 </div>
