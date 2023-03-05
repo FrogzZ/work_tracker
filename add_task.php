@@ -10,7 +10,7 @@ if($_COOKIE['user'] != ''):
 ?>
 <?php include "blocks/header.php"?>
 <div class="container">
-    <form method="post" action="success.php">
+    <form method="post" action="success.php" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleFormControlInput1">Заголовок</label>
             <input type="text" class="form-control" name="title" required placeholder="Текст заголовка">
@@ -26,6 +26,10 @@ if($_COOKIE['user'] != ''):
                 <option class="text-warning" value="1">Побыстрее</option>
                 <option class="text-danger" value="2">Срочно</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Загрузить картинку</label>
+            <input type="file" class="form-control-file" name="image">
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить задачу</button>
     </form>

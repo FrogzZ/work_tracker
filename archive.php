@@ -30,7 +30,7 @@ if($_COOKIE['user'] != ''):
 
 <?php foreach ($get_all_tasks as $active):?>
     <div class="container mt-2">
-        <div class="card mb-4 shadow-sm">
+        <div class="card mb-2 shadow-sm">
             <div class="card-header <?php
             switch ($active[6]) {
                 case 0:
@@ -46,15 +46,24 @@ if($_COOKIE['user'] != ''):
             ?>">
                 <h4 class="my-0 font-weight-normal text-white"><?php echo $active[1];?></h4>
             </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li><?php echo $active[2];?></li>
-                    <small id="emailHelp" class="form-text text-muted">Задание завершено: <?php echo $active[5];?></small>
-                </ul>
 
-                <form method="post" action="task_back.php">
-                    <button type="submit" name="task_back" value="<?php echo $active[0];?>" class="btn btn-lg btn-block btn-outline-danger">Вернуть задачу</button>
-                </form>            </div>
+            <div class="media">
+                <?php $img = 'noimg.png';
+                if ($active[8] != Null){
+                    $img = '/upload/'.$active[8];
+                }
+                ?>
+                <a href="img/<?=$img;?>" target="_blank"><img class="m-3 rounded" src="img/<?php echo $img;?>" width="150" height="150" alt="Task image"></a>
+                <div class="media-body">
+                    <ul class="list-unstyled mt-3 mb-4 m-3">
+                        <li><?php echo $active[2];?></li>
+                        <small id="emailHelp" class="form-text text-muted">Задание завершено: <?php echo $active[5];?></small>
+                    </ul>
+                    <form method="post" action="task_back.php" class="m-3">
+                        <button type="submit" name="task_back" value="<?php echo $active[0];?>" class="btn btn-lg btn-block btn-outline-danger">Вернуть задачу</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 <?php endforeach; ?>

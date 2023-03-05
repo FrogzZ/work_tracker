@@ -49,7 +49,9 @@ $sql = "CREATE TABLE IF NOT EXISTS tasks (
     archive boolean NOT NULL,
     create_at text NOT NULL,
     update_at text,
-    urgency smallint NOT NULL
+    urgency smallint NOT NULL,
+    who_add text NOT NULL,
+    img text NULL
 )";
 
 //$sql = "CREATE TABLE IF NOT EXISTS auth (
