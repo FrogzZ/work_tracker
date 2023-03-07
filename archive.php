@@ -4,7 +4,6 @@
 //ini_set('display_startup_errors', 1);
 ?>
 <?php include "blocks/head.php"?>
-<body>
 <?php
 if($_COOKIE['user'] != ''):
 ?>
@@ -28,7 +27,7 @@ if($_COOKIE['user'] != ''):
 //pg_close($dbconn);
 ?>
 
-<?php foreach ($get_all_tasks as $active):?>
+    <?php foreach ($get_all_tasks as $active):?>
     <div class="container mt-2">
         <div class="card mb-2 shadow-sm">
             <div class="card-header <?php
